@@ -31,9 +31,10 @@ public class TravelAgency implements Serializable {
 	@Column(name = "name", length = 50)
 	private String name;
 
-	@Column(name = "status", length = 1)
-	private String status;
+	@Column(name = "arcTicketingStatus", length = 1)
+	private String arcTicketingStatus;
 	
-	
+	@Column(name = "airlineTicketingStatus", length = 1)
+	private String airlineTicketingStatus;
 	
 }
