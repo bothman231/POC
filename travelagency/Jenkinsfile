@@ -27,7 +27,7 @@ pipeline {
            
 // 1 change           
                     script {
-                       jobName="TravelAgency"
+                       jobName="travelagency"
                     }
               
               echo "jobName=${jobName}"
@@ -46,7 +46,7 @@ pipeline {
                 
  
                 
-                sh 'mvn -f TravelAgency/ -B install'
+                sh 'mvn -f travelagency/ -B install'
                 
                 notifyStarted("Build ended", "")
             }
@@ -73,7 +73,7 @@ pipeline {
               withSonarQubeEnv('SonarServer') {
                  //sh "${scannerHome}/bin/sonar-scanner"
 // 2 Change                 
-                  sh 'mvn -f TravelAgency/ org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+                  sh 'mvn -f travelagency/ org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
               }
               
            }
@@ -93,7 +93,7 @@ pipeline {
                 
                 echo 'Testing.......1'
 // 3 Change                
-                sh 'mvn -f TravelAgency/ -Dmaven.test.failure.ignore=true -B test'
+                sh 'mvn -f travelagency/ -Dmaven.test.failure.ignore=true -B test'
                 
                 notifyStarted("Tests Ended", "")
             }
@@ -120,7 +120,7 @@ pipeline {
                 echo 'version='${version}    
                 sh 'pwd'
 // 4 Change                
-                sh 'cp TravelAgency/target/TravelAgency-0.0.1-SNAPSHOT.jar /tmp/TravelAgency.jar'
+                sh 'cp travelagency/target/travelagency-0.0.1-SNAPSHOT.jar /tmp/travelagency.jar'
             }
         }
         */
@@ -132,7 +132,7 @@ pipeline {
                  def uploadSpec = """{
                  "files": [
                  {
-                    "pattern": "TravelAgency/TravelAgency-0.0.1-SNAPSHOT.jar",
+                    "pattern": "travelagency/travelagency-0.0.1-SNAPSHOT.jar",
                     "target": "/libs-snapshot-local/"
                  }
                  ]
