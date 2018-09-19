@@ -1,0 +1,67 @@
+// TravelAgency - Jenkinsfile
+
+
+pipeline {
+    agent any
+  tools {
+        maven 'Maven3.5'
+        jdk 'JDK8'
+    }
+   
+    stages {
+        stage('Init') {
+           steps {
+                             echo 'Init'
+           
+           
+                    script {
+                       jobName="Base_Pipeline"
+                    }
+              
+              echo "jobName=${jobName}"
+           }
+        }
+        
+        
+    
+        
+        stage('Build') {
+            steps {
+                echo "888"
+                echo 'Building..1'
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                // export JENKINS_MAVEN_AGENT_DISABLED=true
+                sh 'mvn -f . -B install'
+            }
+        }
+        
+        
+            /* Comment this until Sonar is up and running */
+        
+        stage('Sonarqube analysis') {
+           steps {
+              echo 'Sonarqube analysis'
+              script {
+                 scannerHome = tool 'SonarServer';
+              }
+              echo "scannerHome=${scannerHome}"
+               
+       
+              withSonarQubeEnv('SonarServer') {
+                 //sh "${scannerHome}/bin/sonar-scanner"
+                  sh 'mvn -f . org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+              }
+              
+           }
+        }
+        
+        
+     
+            
+            
+            
+    } // Stages
+    
+    
+    
+} // Pipeline
