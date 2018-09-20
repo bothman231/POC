@@ -41,6 +41,7 @@ public class TravelAgencyController {
 		                        @RequestParam(value="sort", required=false) String sort,
 		                        @RequestParam(value="page", required=false) String page) {	
 	   String mName="getAllTravelAgency";
+	   
 	   if (log.isDebugEnabled()) {
 		   log.debug(mName+" Starts");
 		   log.debug(mName+" fields="+fields+"*");
@@ -48,6 +49,7 @@ public class TravelAgencyController {
 		   log.debug(mName+" sort="+sort+"*");
 		   log.debug(mName+" page="+page+"*");
 	   }
+	   
 	   return travelAgencyRepository.findAll();
    }
    
