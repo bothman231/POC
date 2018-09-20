@@ -27,7 +27,7 @@ public class TravelAgencyController {
    public String hello() {
 	   System.out.println("hello ran "+new Date());
 	   
-	   return "{\"message\": \"This is a https:// endpoint\"}";
+	   return "{\"message\": \"This is a http:// endpoint\"}";
    }
    
    

@@ -7,11 +7,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 
 
 @SpringBootApplication
-public class TravelagencyApplication {
+public class TravelagencyApplication extends SpringBootServletInitializer {
 
 	Logger log = LoggerFactory.getLogger(TravelagencyApplication.class);
 	
@@ -23,6 +25,15 @@ public class TravelagencyApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TravelagencyApplication.class, args);
 	}
+	
+	
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(TravelagencyApplication.class);
+    }
+    
+    
+    
 	
 	
 	@PostConstruct
