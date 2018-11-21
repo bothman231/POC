@@ -1,5 +1,9 @@
 package com.arccorp.travelagency;
 
+
+
+
+
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -42,6 +46,10 @@ public class TravelAgencyController {
 		                        @RequestParam(value="page", required=false) String page) {	
 	   String mName="getAllTravelAgency";
 	   
+	   if (log.isInfoEnabled()) {
+		   log.info(mName+" Starts");
+	   }
+	   
 	   if (log.isDebugEnabled()) {
 		   log.debug(mName+" Starts");
 		   log.debug(mName+" fields="+fields+"*");
@@ -56,7 +64,8 @@ public class TravelAgencyController {
    
    @PostConstruct
    public void afterPropsSet() {
-	   System.out.println("travelAgencyRepository="+travelAgencyRepository);
+	   String mName="afterPropsSet";
+	   System.out.println(mName+" travelAgencyRepository="+travelAgencyRepository);
 	   /*
 	   List<Jobs> jobs = jobsRepository.findAll();
 	   for (Jobs j : jobs) {

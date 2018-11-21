@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.core.env.Environment;
 
 
 
@@ -33,7 +34,8 @@ public class TravelagencyApplication extends SpringBootServletInitializer {
     }
     
     
-    
+    @Autowired
+    private Environment environment;
 	
 	
 	@PostConstruct
@@ -43,12 +45,24 @@ public class TravelagencyApplication extends SpringBootServletInitializer {
 		
 		if (log.isDebugEnabled()) {
 			log.debug(mName+" Starts, "+travelAgencyRepository);
+			log.debug(mName+" config.id="+environment.getProperty("config.id"));
+			
 		}
 		
+		
+		
+		int travelAgencies=0;
 		for (TravelAgency ta : travelAgencyRepository.findAll()) {
+			
+			travelAgencies++;
+			
 			if (log.isDebugEnabled()) {
 				log.debug(mName+" "+ta.toString());
 			}
+		}
+		
+		if (log.isDebugEnabled()) {
+			log.debug(mName+" found "+travelAgencies+" travel agencies");
 		}
 		
 	}
