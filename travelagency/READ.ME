@@ -1,10 +1,28 @@
 Get all travelagencies
 
-http://localhost:8804/api/travelagency
+When running locally from STS
 
+
+http://localhost:8804/api/travelagency
+http://localhost:8804/index.html
+
+When deployed to tomcat
+
+Rest endpoint
+http://localhost:8804/travelagency/api/travelagency/
+
+Index
+http://localhost:8804/travelagency/index/html
 
 
 if you wanna load a different config (application.properties)
 java arguments
 -Dspring.config.location=c:/unique/JAVA_CONF/spring/MSSQL/
+
+You can deploy directly to a tomcat server, see the .pom..
+there is a config option setup to do this deploy to fncserver3
+
+right click project/run as/run configurations/pick the deploy to tomcat option
+
+
 
